@@ -1,0 +1,105 @@
+import React from "react";
+import { useLocation, useParams } from "react-router-dom";
+
+const Produto = () => {
+    
+    const Params = useParams()
+    const location = useLocation()
+    console.log(location)
+    const search = new URLSearchParams(location.search)
+    console.log(search.get(''))
+    
+
+    return(
+        <h2>
+            Produto: {Params.id}
+        </h2>
+    )
+}
+
+export default Produto
+
+
+
+
+segunda parte 
+
+
+
+import React from "react";
+import { useParams, Routes, Route, NavLink} from "react-router-dom";
+import ProdutoDescricao from './ProdutoDescricao'
+import ProdutoAvaliacao from "./ProdutoAvaliacao";
+import ProdutoCustomizacao from "./ProdutoCustomizacao";
+
+
+const Produto = () => {
+const Params = useParams()
+
+    return(
+        <div>
+        <h2>
+            Produto: {Params.id}
+        </h2>
+        <nav>
+            <NavLink to=''>
+            Descrição
+            </NavLink>
+            <NavLink to='avaliacao'>
+            Avaliação
+            </NavLink>
+            <NavLink to='customizacao'>
+            Customizaçao
+            </NavLink>
+        </nav>
+        <Routes>
+            <Route path='/' element={<ProdutoDescricao/>}/> 
+
+            <Route path='avaliacao' element={<ProdutoAvaliacao/>}/> 
+
+            <Route path='customizacao' element={<ProdutoCustomizacao/>}/>
+        </Routes>
+        </div>
+    )
+}
+
+export default Produto
+
+
+
+terceira parte 
+
+
+
+import React from "react";
+import { useParams,  NavLink, Outlet} from "react-router-dom";
+
+
+
+const Produto = () => {
+const Params = useParams()
+
+    return(
+        <div>
+        <h2>
+            Produto: {Params.id}
+        </h2>
+        <nav>
+            <NavLink to=''>
+            Descrição
+            </NavLink>
+            <NavLink to='avaliacao'>
+            Avaliação
+            </NavLink>
+            <NavLink to='customizacao'>
+            Customizaçao
+            </NavLink>
+        </nav>
+
+        <Outlet/>
+       
+        </div>
+    )
+}
+
+export default Produto
